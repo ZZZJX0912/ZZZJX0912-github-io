@@ -29,8 +29,22 @@
 <li><strong>当一个函数执行完之后，本地作用域外部仍然可以改变（使用）函数内的参数</strong>（经典）</li>
 <li>一个函数的作用域得到了继承</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params"></span>)</span>&#123;      <span class="comment">//   add.[[scope]]——&gt;1.AO(add) 2.GO</span></span><br><span class="line">    <span class="keyword">var</span> y = <span class="number">0</span>;     </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>)</span>&#123;    <span class="comment">//  b.[[scope]]——&gt;1.AO(b) 2.AO(add) 3.GO</span></span><br><span class="line">        <span class="built_in">console</span>.log(++y);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b     <span class="comment">//对外输出内部函数（外面就能使用里面的作用域了）形成了闭包</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> num = add();    <span class="comment">//此时的num.[[scope]]——&gt;1.AO(b)2.AO(add)3.GO </span></span><br><span class="line">num();  <span class="comment">//1   </span></span><br><span class="line">num();  <span class="comment">// 2        //AO继承，实现累加</span></span><br><span class="line"><span class="keyword">var</span> num2 = add();   <span class="comment">//此时的num2.[[scope]]——&gt;1.AO(b)2.AO(add)3.GO </span></span><br><span class="line">num2();  <span class="comment">//1</span></span><br><span class="line">num(); <span class="comment">// 3</span></span><br><span class="line">num3 = num;</span><br><span class="line">num3(); <span class="comment">// 4</span></span><br></pre></td></tr></table></figure>
+<pre><code class="javascript">function add(){      //   add.[[scope]]——&gt;1.AO(add) 2.GO
+    var y = 0;     
+    function b(){    //  b.[[scope]]——&gt;1.AO(b) 2.AO(add) 3.GO
+        console.log(++y);
+    }
+    return b     //对外输出内部函数（外面就能使用里面的作用域了）形成了闭包
+}
 
+var num = add();    //此时的num.[[scope]]——&gt;1.AO(b)2.AO(add)3.GO 
+num();  //1   
+num();  // 2        //AO继承，实现累加
+var num2 = add();   //此时的num2.[[scope]]——&gt;1.AO(b)2.AO(add)3.GO 
+num2();  //1
+num(); // 3
+num3 = num;
+num3(); // 4</code></pre>
 <p>上面这段代码，原本function b在<code>console.log(++y)</code>之后就执行完毕，与AO（b）断开连接，作用域就清空了，等待下一次函数的执行</p>
 <p>但是函数add <code>return b</code>，那么add就继承了b的作用域，原本清空的y值得到的继承（y儿子拥有了个后爹，不用饿死了）</p>
 <p>这就完成了条件，b函数执行完之后，他的作用域得到了继承。</p>
