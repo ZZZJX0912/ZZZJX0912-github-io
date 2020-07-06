@@ -15,7 +15,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://zzzjx0912.github.io/2020/07/06/proto/proto_list.jpg">
 <meta property="article:published_time" content="2020-07-06T15:06:23.000Z">
-<meta property="article:modified_time" content="2020-07-06T15:10:41.258Z">
+<meta property="article:modified_time" content="2020-07-06T15:36:40.440Z">
 <meta property="article:author" content="ZJX">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -24,8 +24,14 @@
 <p><strong>原型</strong>(object.prototype)是函数function的一个属性，<strong>它定义了该构造函数new出来对象的公共属性</strong>，new出来的对象可以继承该原型的属性和方法。(原型是该构造函数new出来对象的爹或者说祖先)</p>
 <p><u><strong>构造函数</strong>和普通函数的区别只有<strong>书写的区别</strong></u>（大驼峰式书写方法：所有单词首字母大写），普通函数用小驼峰书写方法（第一个单词首字母小写，剩下单词首字母大写）。</p>
 <p>构造函数new出来的对象实例是相互独立且相同的（<em>同一个模子刻出来的，构造函数就是模子，new出来的对象实例就是工艺品，长得都一样，但是相互独立，是不同的个体</em>）</p>
-<p><strong>注意！！</strong><a href="https://yushen7.github.io/blog/" target="_blank" rel="noopener">宇神</a>曾教导我：<strong>（1）函数function是对象，但是对象不是函数！ **  *</strong>而原型本身也是个对象***。</p>
-<p><strong>（2）当实例对象new出来以后，constructor就只是指向构造函数的指针<em>指向存储构造函数的空间</em>，__ proto__就是指向原型prototype的指针<em>指向存储原型的空间</em>。</strong></p>
+<p><strong>注意！！</strong><a href="https://yushen7.github.io/blog/" target="_blank" rel="noopener">宇神</a>曾教导我：*<em>（1）函数function是对象，但是对象不是函数！而原型本身也是个对象 *</em>  。</p>
+<p><strong>（2）当实例对象new出来以后，constructor就只是指向构造函数的指针<em>指向存储构造函数的空间</em>，[[proto]]就是指向原型prototype的指针<em>指向存储原型的空间</em>。</strong></p>
+<p>（3）[[proto]]是在es规范里的写法，而__ proto__是个别浏览器的实现，但指代的都是指向原型的指针</p>
+<p>ps：根据<a href="https://www.caniuse.com/#search=__proto__" target="_blank" rel="noopener">数据来源</a>得知现在基本所有浏览器都可以接受__ proto__这个写法</p>
+
+
+<p>但是这是一种可能要被废弃的写法，还是早点改吧hhhhhh</p>
+<hr>
 <p>使用原型提取构造函数公有属性可以减少new对象时代码的冗余：</p>
 <pre><code class="javascript">//不使用原型时
 function Car(color, ownerName){
