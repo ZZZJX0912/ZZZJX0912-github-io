@@ -1,0 +1,113 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#0078E7"><meta name="author" content="ZJX"><meta name="copyright" content="ZJX"><meta name="generator" content="Hexo 4.2.1"><meta name="theme" content="hexo-theme-yun"><title>零碎知识汇总 | ZJX's Blog</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&amp;family=Source+Code+Pro&amp;display=swap" media="none" onload="this.media='all'"><script src="//at.alicdn.com/t/font_1140697_pem9yni52s.js" async></script><script src="https://cdn.jsdelivr.net/npm/scrollreveal/dist/scrollreveal.min.js" defer></script><script>document.addEventListener("DOMContentLoaded", () => {
+  [".post-card",".post-content img"].forEach((target)=> {
+    ScrollReveal().reveal(target);
+  })
+});
+</script><link rel="shortcut icon" type="image/svg+xml" href="/yun.svg"><link rel="mask-icon" href="/yun.svg" color="#0078E7"><link rel="alternate icon" href="/yun.ico"><link rel="preload" href="/css/hexo-theme-yun.css" as="style"><link rel="preload" href="/js/utils.js" as="script"><link rel="preload" href="/js/hexo-theme-yun.js" as="script"><link rel="prefetch" href="/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="stylesheet" href="/css/hexo-theme-yun.css"><script id="yun-config">
+    const Yun = window.Yun || {};
+    window.CONFIG = {"root":"/","title":"ZJX的小破站","version":"0.9.1","anonymous_image":"https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/avatar/none.jpg","say":{"api":"https://v1.hitokoto.cn","hitokoto":true},"fireworks":{"colors":["102, 167, 221","62, 131, 225","33, 78, 194"]}};
+  </script><meta name="description" content="零碎前端知识（更新中）arguments 和 形参在非严格模式下 argument 和形参相辅相成，一方会随着另一方的改变而改变 在严格模式下 argument是静态副本，二者相互独立 for-in 循环遍历自身和原型链上的可枚举属性，配合hasOwnProperty()---&gt;判断是否为枚举源的属性 使用 箭头函数和普通函数箭头函数在定义时确定，普通函数在执行前（预编译）时确定 箭头函数无">
+<meta property="og:type" content="article">
+<meta property="og:title" content="零碎知识汇总">
+<meta property="og:url" content="https://zzzjx0912.github.io/2020/09/16/interview/index.html">
+<meta property="og:site_name" content="ZJX&#39;s Blog">
+<meta property="og:description" content="零碎前端知识（更新中）arguments 和 形参在非严格模式下 argument 和形参相辅相成，一方会随着另一方的改变而改变 在严格模式下 argument是静态副本，二者相互独立 for-in 循环遍历自身和原型链上的可枚举属性，配合hasOwnProperty()---&gt;判断是否为枚举源的属性 使用 箭头函数和普通函数箭头函数在定义时确定，普通函数在执行前（预编译）时确定 箭头函数无">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-09-15T17:17:04.000Z">
+<meta property="article:modified_time" content="2020-09-15T17:17:04.114Z">
+<meta property="article:author" content="ZJX">
+<meta property="article:tag" content="interview">
+<meta name="twitter:card" content="summary"></head><body><script defer src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script defer src="/js/ui/fireworks.js"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script defer src="/js/sidebar.js"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="Table of Contents"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-list-ordered"></use></svg></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="Overview"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-passport-line"></use></svg></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/about/" title="ZJX"><img width="96" loading="lazy" src="/tx.jpg" alt="ZJX"></a><div class="site-author-name"><a href="/about/">ZJX</a></div><a class="site-name" href="/about/site.html">ZJX's Blog</a><sub class="site-subtitle"></sub><div class="site-desciption"></div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="Home"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-4-line"></use></svg></span></a><div class="site-state-item"><a href="/archives/" title="Archives"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-archive-line"></use></svg></span><span class="site-state-item-count">7</span></a></div><div class="site-state-item"><a href="/categories/" title="Categories"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-2-line"></use></svg></span><span class="site-state-item-count">0</span></a></div><div class="site-state-item"><a href="/tags/" title="Tags"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="site-state-item-count">2</span></a></div><a class="site-state-item hty-icon-button" href="https://yun.yunyoujun.cn" target="_blank" rel="noopener" title="文档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-settings-line"></use></svg></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/ZZZJX0912" title="GitHub" target="_blank" style="color:#6e5494"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://music.163.com/#/user/home?id=112766323" title="网易云音乐" target="_blank" style="color:#C20C0C"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-netease-cloud-music-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="mailto:13662206756@163.com" title="E-Mail" target="_blank" style="color:#8E71C1"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-mail-line"></use></svg></a></div><hr style="margin:0.5rem 1rem"><div class="links"><a class="links-item hty-icon-button" href="/links/" title="我的小伙伴们" style="color:dodgerblue"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-genderless-line"></use></svg></a></div></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#零碎前端知识（更新中）"><span class="toc-number">1.</span> <span class="toc-text">零碎前端知识（更新中）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#arguments-和-形参"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">arguments 和 形参</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#for-in-循环"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">for-in 循环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#箭头函数和普通函数"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">箭头函数和普通函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#从输入url到浏览器显示页面发生了什么"><span class="toc-number">1.0.0.4.</span> <span class="toc-text">从输入url到浏览器显示页面发生了什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#语义化"><span class="toc-number">1.0.0.5.</span> <span class="toc-text">语义化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#前端工程化-说不准"><span class="toc-number">1.0.0.6.</span> <span class="toc-text">前端工程化(说不准)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#flex-布局（弹性布局）"><span class="toc-number">1.0.0.7.</span> <span class="toc-text">flex 布局（弹性布局）</span></a></li></ol></li></ol></li></ol></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="post-block" itemscope itemtype="https://schema.org/Article"><link itemprop="mainEntityOfPage" href="https://zzzjx0912.github.io/2020/09/16/interview/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="ZJX"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="ZJX's Blog"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">零碎知识汇总</h1><div class="post-meta"><div class="post-time" style="display:inline-block"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-line"></use></svg></span> <time title="Created: 2020-09-16 01:17:04" itemprop="dateCreated datePublished" datetime="2020-09-16T01:17:04+08:00">2020-09-16</time></div><span class="post-busuanzi"><span class="post-meta-divider">-</span><span class="post-meta-item-icon" title="Views"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-eye-line"></use></svg> <span id="busuanzi_value_page_pv"></span></span></span><div class="post-classify"><span class="post-tag"><a class="tag" href="/tags/interview/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">interview</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content post-markdown"><h1 id="零碎前端知识（更新中）"><a href="#零碎前端知识（更新中）" class="headerlink" title="零碎前端知识（更新中）"></a>零碎前端知识（更新中）</h1><h4 id="arguments-和-形参"><a href="#arguments-和-形参" class="headerlink" title="arguments 和 形参"></a>arguments 和 形参</h4><p>在非严格模式下 <code>argument</code> 和形参相辅相成，一方会随着另一方的改变而改变</p>
+<p>在严格模式下 <code>argument</code>是静态副本，二者相互独立</p>
+<h4 id="for-in-循环"><a href="#for-in-循环" class="headerlink" title="for-in 循环"></a>for-in 循环</h4><p>遍历自身和原型链上的可枚举属性，配合<code>hasOwnProperty()---&gt;判断是否为枚举源的属性</code> 使用</p>
+<h4 id="箭头函数和普通函数"><a href="#箭头函数和普通函数" class="headerlink" title="箭头函数和普通函数"></a>箭头函数和普通函数</h4><p>箭头函数在定义时确定，普通函数在执行前（预编译）时确定</p>
+<p>箭头函数无法当做构造函数来使用（无法用new调用），因为：1.没有prototype 2.没有[[constructor]] 3.this早已确定</p>
+<p>箭头函数没有<strong>自己的</strong>arguments，但能获取上一层级的arguments</p>
+<h4 id="从输入url到浏览器显示页面发生了什么"><a href="#从输入url到浏览器显示页面发生了什么" class="headerlink" title="从输入url到浏览器显示页面发生了什么"></a>从输入url到浏览器显示页面发生了什么</h4><ul>
+<li><p>输入url后，对url进行dns解析，转换成ip地址</p>
+<p>1、首先查找<strong>本地的hosts缓存文件</strong>是否有这个url地址的映射，如果有，就先调用这个ip地址映射，完成域名解析</p>
+<p>2、如果没有，浏览器向<strong>本地dns服务器</strong>发送请求（本地dns服务器由运营商提供）</p>
+<p>3、请求到本地dns服务器后，会先查找本地dns服务器的缓存文件，有相关映射会直接返回</p>
+<p>4、如果没有，则向<strong>dns根服务器</strong>进行查询</p>
+<p>5、如果dns根服务器也没有的话，则告诉本地dns服务器，向dns域服务器进行请求，并返回<strong>dns域服务器</strong>的地址</p>
+<p>6、本地dns服务器继续向dns域服务器进行查询，域服务器收到请求后，<strong>不会直接返回域名和ip的对应关系</strong>，而是给出所查询的域名解析服务器的地址</p>
+<p>7、最后，本地dns服务器对域名的解析服务器进行请求，从而得到一个ip地址和域名的对应关系，并存储在缓存文件中</p>
+</li>
+<li><p>发送HTTP请求</p>
+<p>得到ip地址后，浏览器根据ip地址和端口号构成一个TCP连接请求，这个请求通过各种路由设备后达到服务器端，进入网卡，进入TCP/IP的协议栈，最终到达服务端的web程序，形成TCP/IP的链接</p>
+</li>
+<li><p>服务器处理清求并返回HTTP报文</p>
+<p>后端从固定的端口接收到tcp报文，对tcp链接进行处理，对http协议进行解析</p>
+</li>
+<li><p>响应报文</p>
+<p>通常就是服务器给浏览器返回文本信息（HTML，CSS，JavaScript等静态文件）</p>
+</li>
+<li><p>浏览器渲染页面</p>
+<p>浏览器解析文件，页面会“自上而下”的加载，并在加载的过程中进行解析和渲染（回流（reflow）和重绘（repaint））</p>
+</li>
+<li><p>连接结束</p>
+</li>
+</ul>
+<h4 id="语义化"><a href="#语义化" class="headerlink" title="语义化"></a>语义化</h4><p>通俗地讲,语义化就是对数据和信息进行处理,使得机器可以理解.</p>
+<p>优点：易于阅读，即使样式丢失也能呈现清晰的结构</p>
+<p>​            SEO（搜索引擎优化），搜索引擎能根据标签来判断上下文和关键字的权重</p>
+<p>​            便于代码维护</p>
+<h4 id="前端工程化-说不准"><a href="#前端工程化-说不准" class="headerlink" title="前端工程化(说不准)"></a>前端工程化(说不准)</h4><p>简而言之言而简之 能让项目快速完成 模块化 组件化 规范化 前后端分离的集合</p>
+<h4 id="flex-布局（弹性布局）"><a href="#flex-布局（弹性布局）" class="headerlink" title="flex 布局（弹性布局）"></a>flex 布局（弹性布局）</h4><p>简述：将元素<code>display</code>设成<code>flex</code>或<code>（行内元素）inline-flex</code>后该元素称为flex容器，其子元素称为flex子项。这便创建了flex布局</p>
+<p>​            flex元素内部有两条轴：1）主轴 2）纵轴（）。</p>
+<p>​            主轴方向默认为水平方向（row），交叉轴方向默认为垂直方向（column），它们是互相垂直的。flex子项排列方向与主轴方向一致。</p>
+<p>属性：</p>
+<ul>
+<li><p>​    flex-direction（决定主轴方向）——&gt;默认从左到右，从上到下</p>
+<pre><code class="css">.box{
+    flex-direction : row|row-reverse|column|column-reverse
+}</code></pre>
+</li>
+<li><p>flex-wrap （决定换行方式）——&gt;当在一条轴线排不下的处理方式</p>
+<pre><code class="css">.box{
+    flex-wrap :wrap|nowrap|wrap-reverse(换行且第一行在最下面)
+}</code></pre>
+</li>
+<li><p>flex-flow——&gt;是上面两个属性的简写版本 默认为 row nowrap</p>
+</li>
+<li><p>justify-content（决定了在主轴的对齐方式）</p>
+<pre><code class="css">.box{
+    justify-content: flex-start | flex-end | center | space-between | space-around
+}</code></pre>
+</li>
+<li><p>align-items（决定了在交叉轴怎么对齐）</p>
+<pre><code class="css">.box{
+    align-items: flex-start | flex-end | center | baseline | stretch; 
+}</code></pre>
+</li>
+<li><p>align-content（定义了多根轴线的对齐方式，如果项目只有一根轴线，则不起作用）</p>
+<pre><code class="css">.box{
+    align-content: flex-start | flex-end | center | space-between | space-around | stretch
+}</code></pre>
+</li>
+</ul>
+<p>order：定义排列顺序，数字越小，越靠前</p>
+<p>flex-grow ：定义放大比例</p>
+<p>flex-shrink ：定义缩小比例</p>
+<p>flex-basis：定义占据主轴的空间大小</p>
+</div><ul class="post-copyright"><li class="post-copyright-author"><strong>Post author: </strong>ZJX</li><li class="post-copyright-link"><strong>Post link: </strong><a href="https://zzzjx0912.github.io/2020/09/16/interview/" title="零碎知识汇总">https://zzzjx0912.github.io/2020/09/16/interview/</a></li><li class="post-copyright-license"><strong>Copyright Notice: </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><svg class="icon"><use xlink:href="#icon-creative-commons-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-by-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-nc-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-sa-line"></use></svg></a> unless stating additionally.</li></ul></section></article><div class="post-nav"><div class="post-nav-item"></div><div class="post-nav-item"><a class="post-nav-next" href="/2020/09/06/dom/" rel="next" title="dom基础"><span class="post-nav-text">dom基础</span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-right-s-line"></use></svg></a></div></div></div><div id="comment"><div class="comment-tooltip text-center"></div><div id="valine-container"></div><script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script><script>function initValine() {
+  const valineConfig = {"enable":"ture","appId":"2zJk2CXTVrYxy5ED3pmT3WPF-gzGzoHsz","appKey":"mU8v1Gu5O47mDNpNxsjHt95U","placeholder":"大佬们来指点一下下呗！","avatar":null,"meta":["nick","mail","link"],"pageSize":10,"lang":"zh-cn","Emoji See":"https://valine.js.org/emoji.html","emojiCDN":"//i0.hdslb.com/bfs/emote/","emojiMaps":{"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"},"el":"#valine-container"}
+  valineConfig.path = window.location.pathname
+  new Valine(valineConfig)
+}
+setTimeout(initValine, 1000)</script></div></main><footer class="sidebar-translate" id="footer"><div class="copyright"><span>&copy; 2020 </span><span class="with-love" id="animate"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-cloud-line"></use></svg></span><span class="author"> ZJX</span></div><div class="powered"><span>Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v4.2.1</span><span class="footer-separator">|</span><span>Theme - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v0.9.1</span></div><div class="live_time"><span>本博客已运行</span><span id="display_live_time"></span><span class="moe-text">(●'◡'●)</span><script>function blog_live_time() {
+  window.setTimeout(blog_live_time, 1000);
+  const start = new Date('2020-06-27T08:00:00');
+  const now = new Date();
+  const timeDiff = (now.getTime() - start.getTime());
+  const msPerMinute = 60 * 1000;
+  const msPerHour = 60 * msPerMinute;
+  const msPerDay = 24 * msPerHour;
+  const passDay = Math.floor(timeDiff / msPerDay);
+  const passHour = Math.floor((timeDiff % msPerDay) / 60 / 60 / 1000);
+  const passMinute = Math.floor((timeDiff % msPerHour) / 60 / 1000);
+  const passSecond = Math.floor((timeDiff % msPerMinute) / 1000);
+  display_live_time.innerHTML = " " + passDay + " 天 " + passHour + " 小时 " + passMinute + " 分 " + passSecond + " 秒";
+}
+blog_live_time();
+</script></div><div id="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_site_uv" title="Total Visitors"><span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-user-line"></use></svg></span><span id="busuanzi_value_site_uv"></span></span><span class="footer-separator">|</span><span id="busuanzi_container_site_pv" title="Total Views"><span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-eye-line"></use></svg></span><span id="busuanzi_value_site_pv"></span></span></div></footer><a class="hty-icon-button" id="goUp" aria-label="back-to-top" href="#"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-up-s-line"></use></svg><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#0078E7" stroke-width="2" stroke-linecap="round"></circle></svg></a></div><script defer src="/js/utils.js"></script><script defer src="/js/hexo-theme-yun.js"></script></body></html>
